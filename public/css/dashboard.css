@@ -1,0 +1,122 @@
+.dashboard-cards {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+	padding: 20px;
+	height: max-content;
+	/* width: 80%;
+	height: 90%; */
+	left: 18%;
+	top: 4em;
+	position: absolute;
+}
+.card {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.department-card {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.department-card h3 {
+	font-size: 18px;
+	margin: 10px 0;
+}
+
+.card i {
+	font-size: 40px;
+	color: #3498db;
+	margin-bottom: 10px;
+}
+
+.card h3 {
+	font-size: 18px;
+	margin: 10px 0;
+}
+
+.card p {
+	font-size: 14px;
+	color: #777;
+	margin: 0;
+}
+.view-button,
+.add-button,
+.delete-button {
+	margin-top: 10px;
+	padding: 5px 10px;
+	font-size: 14px;
+	border: none;
+	cursor: pointer;
+	background-color: #3498db;
+	color: #fff;
+	border-radius: 5px;
+}
+
+.view-button:hover,
+.add-button:hover,
+.delete-button:hover {
+	background-color: #2980b9;
+}
+
+.dashboard-employees {
+	display: flex;
+
+	background-color: #222;
+	position: absolute;
+	top: 5em;
+	left: 15%;
+	width: 80%;
+
+	height: max-content;
+}
+.dashboard-students {
+	display: flex;
+	background-color: #222;
+	position: absolute;
+	top: 5em;
+	left: 15%;
+	width: 80%;
+	flex-direction: column;
+	height: max-content;
+	color: #777;
+}
+.dashboard-students h2 {
+	text-align: center;
+	text-decoration: underline;
+	color: rgb(149, 118, 14);
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table,
+th,
+td {
+	border: 1px double #171717;
+}
+
+th,
+td {
+	padding: 0.5rem;
+	text-align: left;
+}
+
+th {
+	background-color: #f4f4f4;
+}

@@ -1,0 +1,75 @@
+/* Reset some default styles */
+/* body, h1, h2, h3, p, ul, ol, li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+} */
+
+/* Header styling */
+
+/* Navigation styling */
+.admin-navigation {
+	background-color: #1c0e0e;
+	padding: 1rem;
+	border-right: 1px solid #ddd;
+	float: left;
+	width: 25%;
+}
+
+.admin-navigation ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.admin-navigation a {
+	display: block;
+	padding: 0.5rem;
+	text-decoration: none;
+	color: #333;
+}
+
+Content styling
+
+
+/* Form styling */
+.admin-container {
+	margin-left: 25%;
+	padding: 2rem;
+}
+
+.section {
+	display: none;
+}
+#add-student-form {
+	margin-top: 1rem;
+	display: grid;
+	gap: 1rem;
+}
+*/
+
+/* Table styling */
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table,
+th,
+td {
+	border: 1px solid #ddd;
+}
+
+th,
+td {
+	padding: 0.5rem;
+	text-align: left;
+}
+
+th {
+	background-color: #f4f4f4;
+}
+
+/* Add more styles as needed */

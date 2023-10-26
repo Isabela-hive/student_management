@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+
+		<!-- <link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+		/> -->
+	</head>
+
+	<body>
+		<%- include('./partials/header.ejs') %>
+		<!-- <headr>
+			<nav class="nav">
+				<a href="instagram"><i class="fab fa-instagram">insta</i></a>
+				<a href="twitter"><i class="fab fa-twitter"></i>tweet</a>
+				<a href="facebook"><i class="fab fa-facebook">fcbk</i></a>
+
+				<a href="youtube"><i class="fab fa-youtube">yutb</i></a>
+			</nav>
+			<button class="btn"><a href="/logout"> Log Out</a></button>
+		</header> -->
+		<div class="dash">
+			<div class="sidebar">
+				<!-- <div class="logo"><h1>Logo</h1></div> -->
+				<!-- <div class="title"><a href="#">Dashboard</a></div> -->
+				<div class="title">
+					<a href="#" class="dashboard-link">Dashboard</a>
+				</div>
+
+				<div class="links">
+					<ul>
+						<!-- <li>
+							<a href="#" class="dashboard-link">Dashboard</a>
+						</li> -->
+						<li>
+							<a href="#department" class="content-link"
+								>Department</a
+							>
+						</li>
+						<li>
+							<a href="#employees" class="content-link"
+								>Employees</a
+							>
+						</li>
+						<li>
+							<a href="#students" class="content-link"
+								>Students</a
+							>
+						</li>
+						<li>
+							<a href="#socials" class="content-link">
+								Socials
+								<span class="expand-arrow">&#9656;</span>
+							</a>
+							<ul class="subcategories">
+								<li>
+									<a href="#news" class="content-link"
+										>News</a
+									>
+								</li>
+								<li>
+									<a href="#events" class="content-link"
+										>Events</a
+									>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a
+								href="#message"
+								class="content-link"
+								data-target="content-message"
+								>Messages</a
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="navb">
+				<div class="logo"><h1>Logo</h1></div>
+				<div class="search">
+					<input type="search" placeholder="Search" />
+				</div>
+				<div class="user">
+					<i class="fas fa-user"></i>
+					<span>Welcome, <%- user.email %></span>
+					<!-- Display the username -->
+				</div>
+				<div class="notification">
+					<i class="fas fa-bell"></i>
+				</div>
+				<div class="profile">
+					<i class="fas fa-user-circle"></i>
+					<span id="profileToggle">User profile</span>
+				</div>
+				<!-- <div id="profileDetails">
+					
+				
+				</div> -->
+			</div>
+			<div class="dashboard-cards" id="dashboard-content">
+				<div class="card weather-card">
+					<div class="weather-icon"><i class="fas fa-sun"></i></div>
+					<h3>Weather Update</h3>
+					<div class="weather-info">
+						<div class="date-time">
+							Today:
+							<p>Loading...</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card">
+					<i class="fas fa-chart-bar"></i>
+					<h3>Departments</h3>
+					<p>Achieved 20% growth in website traffic this quarter.</p>
+				</div>
+				<div class="card">
+					<i class="fas fa-users"></i>
+					<h3>Employees</h3>
+					<p>
+						Introduced new training programs for employee
+						development.
+					</p>
+				</div>
+				<div class="card">
+					<i class="fas fa-calendar-alt"></i>
+					<h3>Events</h3>
+					<p>Upcoming event: Annual Employee Recognition Ceremony.</p>
+				</div>
+			</div>
+			<!-- Add more cards as needed -->
+		</div>
+
+		<!-- <div class="dash-content"></div> -->
+		<div class="dash-content" id="content-department">
+			<!-- -->
+			<div class="dashboard-cards">
+				<div class="card department-card" data-department="guiding">
+					<h3>Guiding and Counselling</h3>
+					<p>
+						Providing guidance and counseling services to students
+						and staff...
+					</p>
+					<!-- <button class="view-button">View More</button>
+    <button class="add-button">Add</button>
+    <button class="delete-button">Delete</button> -->
+
+					<div class="view-button">View more</div>
+				</div>
+				<div class="card department-card" data-department="comping">
+					<h3>Computing</h3>
+					<p>
+						Creating and managing marketing campaigns to promote the
+						organization...
+					</p>
+					<!-- <button class="view-button">View More</button>
+    <button class="add-button">Add</button>
+    <button class="delete-button">Delete</button> -->
+
+					<div class="view-button">View more</div>
+				</div>
+				<div class="card department-card" data-department="it">
+					<h3>IT Support</h3>
+					<p>
+						Providing technical assistance and support for the
+						organization's IT systems...
+					</p>
+
+					<div class="view-button">View more</div>
+				</div>
+				<!-- Add more department cards as needed -->
+			</div>
+		</div>
+		<div class="dash-content" id="content-employees">
+			<div class="dashboard-employees">
+				<section id="Employees-table" class="table-section">
+					<h2>Employees</h2>
+					<table id="employees-list">
+						<!-- Table header -->
+						<thead>
+							<tr>
+								<th>First Name</th>
+								<th>LastName</th>
+								<th>ID Number</th>
+								<th>Phone Number</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<!-- Table body will be populated dynamically using JavaScript -->
+						<tbody></tbody>
+					</table>
+				</section>
+
+				<!-- Content for the Employees link -->
+			</div>
+		</div>
+		<!-- <div class="dash-content" id="content-students">
+			<div class="dashboard-students"> -->
+		<!-- dashboard.ejs -->
+		<div class="dash-content" id="content-students">
+			<div class="dashboard-students">
+				<button class="btn">
+					<a href="/students/add">Add Student</a>
+				</button>
+				<h2>Student List</h2>
+
+				<table>
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Cohort</th>
+						<th>Gender</th>
+						<th>Date of Birth</th>
+						<th>Age</th>
+						<th>Action</th>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<!-- 
+			</div>
+		</div> -->
+		<div class="dash-content" id="content-message">
+			messages
+			<!-- Content for the Messages link -->
+		</div>
+
+		<!-- <div class="dash-content" id="content-socials">
+        socials
+       
+      </div> -->
+		<div class="dash-content" id="content-news">
+			News
+			<!-- Content for the Socials link -->
+		</div>
+		<div class="dash-content" id="content-events">
+			Events
+			<!-- Content for the Socials link -->
+		</div>
+		<%- include('./partials/footer.ejs') %>
+		<script src="/javascrpt/script3.js"></script>
+	</body>
+</html>

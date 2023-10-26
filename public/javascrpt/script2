@@ -1,0 +1,170 @@
+$(document).ready(function () {
+	// Fetch and display students when the "Read All Students" link is clicked
+	$('#read-all-students').on('click', function (event) {
+		event.preventDefault();
+		$('.admin-content .section').hide(); // Hide other sections
+		fetchAndPopulateStudentsTable();
+		$('#students-list').show();
+	});
+
+	function fetchAndPopulateStudentsTable() {
+		axios
+			.get('/students')
+			.then((response) => {
+				const students = response.data;
+				const studentsTableBody = document.getElementById(
+					'students-table-body'
+				);
+				studentsTableBody.innerHTML = ''; // Clear existing rows
+				students.forEach((student) => {
+					const row = studentsTableBody.insertRow();
+					row.innerHTML = `<td>${student.firstname}</td><td>${student.lastname}</td><td>${student.idnumber}</td><td>${student.gender}</td><td>${student.cohort}</td><td>${student.dob}</td><td><button class="delete-student-btn" data-id="${student._id}">Delete</button></td>`;
+				});
+
+				// Add event listeners for delete buttons
+				const deleteButtons = document.querySelectorAll(
+					'.delete-student-btn'
+				);
+				deleteButtons.forEach((button) => {
+					button.addEventListener('click', handleDeleteStudent);
+				});
+			})
+			.catch((error) => {
+				console.error('Error fetching students:', error);
+			});
+	}
+
+	// Function to handle deleting a student
+	function handleDeleteStudent(event) {
+		const studentId = event.target.dataset.id;
+		axios
+			.delete(`/students/${studentId}`)
+			.then((response) => {
+				fetchAndPopulateStudentsTable(); // Refresh the table after deletion
+			})
+			.catch((error) => {
+				console.error('Error deleting student:', error);
+			});
+	}
+
+	// ... Other code for Add Student, Search Student, etc.
+});
+
+$(document).ready(function () {
+	// Fetch and display students when the "Read All Students" link is clicked
+	$('#read-all-students').on('click', function (event) {
+		event.preventDefault();
+		$('.admin-content .section').hide(); // Hide other sections
+		fetchAndPopulateStudentsTable();
+		$('#students-list').show();
+	});
+
+	// ... Other code ...
+
+	// Fetch and populate students table
+	function fetchAndPopulateStudentsTable() {
+		axios
+			.get('/students')
+			.then((response) => {
+				const students = response.data;
+				const studentsTableBody = document.getElementById(
+					'students-table-body'
+				);
+				studentsTableBody.innerHTML = ''; // Clear existing rows
+				students.forEach((student) => {
+					const row = studentsTableBody.insertRow();
+					row.innerHTML = `<td>${student.firstname}</td><td>${student.lastname}</td><td>${student.idnumber}</td><td>${student.gender}</td><td>${student.cohort}</td><td>${student.dob}</td><td><button class="delete-student-btn" data-id="${student._id}">Delete</button></td>`;
+				});
+
+				// Add event listeners for delete buttons
+				const deleteButtons = document.querySelectorAll(
+					'.delete-student-btn'
+				);
+				deleteButtons.forEach((button) => {
+					button.addEventListener('click', handleDeleteStudent);
+				});
+			})
+			.catch((error) => {
+				console.error('Error fetching students:', error);
+			});
+	}
+
+	// ... Other code ...
+});
+
+$(document).ready(function () {
+	// ... Other code ...
+
+	// Handle form submission to add a student
+	$('#add-student-form').submit(function (event) {
+		event.preventDefault();
+		const firstname = $('#firstname').val();
+		const lastname = $('#lastname').val();
+		const idnumber = $('#idnumber').val();
+		const gender = $('#gender').val();
+		const cohort = $('#cohort').val();
+		const dob = $('#dob').val();
+
+		axios
+			.post('/students', {
+				firstname,
+				lastname,
+				idnumber,
+				gender,
+				cohort,
+				dob,
+			})
+			.then((response) => {
+				fetchAndPopulateStudentsTable(); // Refresh the table after adding
+				// Clear the form fields
+				$('#firstname').val('');
+				$('#lastname').val('');
+				$('#idnumber').val('');
+				$('#gender').val('');
+				$('#cohort').val('');
+				$('#dob').val('');
+			})
+			.catch((error) => {
+				console.error('Error adding student:', error);
+			});
+	});
+
+	// ... Other code ...
+});
+
+$(document).ready(function () {
+	// ... Other code ...
+
+	// Handle form submission to search for students
+	$('#search-student-form').submit(function (event) {
+		event.preventDefault();
+		const searchQuery = $('#search-query').val();
+
+		axios
+			.get(`/students/search?query=${searchQuery}`)
+			.then((response) => {
+				const searchedStudents = response.data;
+				const studentsTableBody = document.getElementById(
+					'students-table-body'
+				);
+				studentsTableBody.innerHTML = ''; // Clear existing rows
+				searchedStudents.forEach((student) => {
+					const row = studentsTableBody.insertRow();
+					row.innerHTML = `<td>${student.firstname}</td><td>${student.lastname}</td><td>${student.idnumber}</td><td>${student.gender}</td><td>${student.cohort}</td><td>${student.dob}</td><td><button class="delete-student-btn" data-id="${student._id}">Delete</button></td>`;
+				});
+
+				// Add event listeners for delete buttons
+				const deleteButtons = document.querySelectorAll(
+					'.delete-student-btn'
+				);
+				deleteButtons.forEach((button) => {
+					button.addEventListener('click', handleDeleteStudent);
+				});
+			})
+			.catch((error) => {
+				console.error('Error searching students:', error);
+			});
+	});
+
+	// ... Other code ...
+});

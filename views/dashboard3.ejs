@@ -1,0 +1,175 @@
+
+	<style>
+		header {
+			background-color: #121111;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+		}
+
+		.data-section {
+			min-height: 90vh;
+          
+
+			width: 100vw;
+			background-color: bisque;
+		}
+		.admin-navigation {
+			display: block;
+			justify-content: space-around;
+			height: 90vh;
+			width: 20%;
+			background-color: rgba(74, 74, 17, 0.27);
+              border-radius: 10px;
+			margin: 10px 0;
+            box-shadow: inset rgb(136, 136, 91) 40px 0 100px;
+			position: fixed;
+			top: 6rem;
+		}
+
+		.card {
+			background-color: #f9f9f9;
+			border: 1px solid #ccc;
+			padding: 15px;
+			width: 45%;
+			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+          
+		}
+	</style>
+
+	<header><%- include('./partials/header.ejs') %></header>
+
+    <div class="data-section">
+	<h2>Dashboard</h2>
+    <div class="admin-navigation">
+        <ul>
+        <li><a href="dashboard">Dashboard</a></li>
+        <li><a href="socials">Socials</a></li>
+        <li><a href="message">Message</a></li>
+        <li><a href="evaluation">Evaluation</a></li>
+      </ul>
+    </div>
+    <!-- <div class="card">
+
+    </div>
+    <div class="card"></div> -->
+	<!-- Add this within the <body> section of your index.html -->
+<section id="students-table" class="section">
+	<h2>All Students</h2>
+	<table id="students-list">
+		<!-- Table header -->
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>LastName</th>
+				<th>ID Number</th>
+				<th>Gender</th>
+				<th>Cohort</th>
+
+				<th>Age</th>
+			</tr>
+		</thead>
+		<!-- Table body will be populated dynamically using JavaScript -->
+		<tbody></tbody>
+	</table>
+</section>
+
+<!-- Add Student form -->
+<section id="add-student" class="section">
+	<h2>Add Student</h2>
+	<form id="add-student-form">
+		<input type="text" id="firstname" placeholder="First Name" required />
+		<input type="text" id="lastname" placeholder="Last Name" required />
+		<input type="text" id="idnumber" placeholder="ID Number" required />
+		<select id="gender">
+			<option value="male">Male</option>
+			<option value="female">Female</option>
+			<option value="female">Other</option>
+		</select>
+		<select id="cohort">
+			<option value="1">Cohort 1</option>
+			<option value="2">Cohort 2</option>
+			<!-- Add other cohort options -->
+		</select>
+		<input type="date" id="dob" placeholder="date of birth" required />
+
+		<button type="submit">Add Student</button>
+	</form>
+</section>
+
+<!-- Similar sections for Delete Student and Search Student -->
+
+<!-- Similar sections for Delete Student and Search Student -->
+
+<!-- JavaScript code to fetch and display data -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+	// Handle form submission to add a student
+	$('#add-student-form').submit(function (event) {
+		event.preventDefault();
+		const firstname = $('#firstname').val();
+		const lastname = $('#lastname').val();
+		const idnumber = $('#idnumber').val();
+		const gender = $('#gender').val();
+		const cohort = $('#cohort').val();
+		const dob = $('#dob').val();
+
+		axios
+			.post('/students', {
+				firstname,
+				lastname,
+				idnumber,
+				gender,
+				cohort,
+				dob,
+			})
+			.then((response) => {
+				// Reload the page to update the students table
+				location.reload();
+			})
+			.catch((error) => {
+				console.error('Error adding student:', error);
+			});
+	});
+
+
+	// Similar logic for Delete Student and Search Student forms
+	// Update the JavaScript code for fetching and displaying data
+$(document).ready(function() {
+  // Fetch all students and populate the table
+  function fetchAndPopulateStudentsTable() {
+    axios.get('/students')
+      .then(response => {
+        const students = response.data;
+        const studentsTable = document.querySelector('#students-list tbody');
+        studentsTable.innerHTML = ''; // Clear existing rows
+        students.forEach(student => {
+          const row = studentsTable.insertRow();
+          row.innerHTML = `<td>${student.firstname}</td><td>${student.lastname}</td><td>${student.idnumber}</td><td>${student.gender}</td><td>${student.cohort}</td><td>${student.dob}</td>`;
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching students:', error);
+      });
+  }
+
+  // Fetch and display students when the "Get All Students" link is clicked
+  $('#get-all-students').on('click', function(event) {
+    event.preventDefault();
+    $('.admin-content .section').hide(); // Hide other sections
+    fetchAndPopulateStudentsTable();
+    $('#students-table').show();
+  });
+
+  // Handle form submission to add a student
+  // ...
+
+  // Similar logic for Delete Student and Search Student forms
+});
+
+</script>
+
+    </div>
+	<%- include('./partials/footer.ejs') %>
+</html>
