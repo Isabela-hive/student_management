@@ -8,7 +8,8 @@
 -   JWT (Jason Web Tokens) for authentication
 -   EJS ( A templating language)
 
-## It is a fully fledged backend system from signing in and signing up for  students and instructors.
+## It is a fully fledged backend system to authenticate users (students, instructors and admin users), group studnets, show students' progress
+ _Use of Principle of Least Privilege (PoLP)._
 
 Remember that a student is only enrolled by the admins of the hub
 it also shows the classes that one is enrolled in
